@@ -1,0 +1,13 @@
+services:
+  - name: frontend
+    type: web
+    plan:
+      - build:
+          name: frontend
+          dockerfile: frontend/Dockerfile
+          context: .
+          target: development
+      - startCommand: npm run start
+    envVars:
+      - key: CHOKIDAR_USEPOLLING
+        value: "true"    

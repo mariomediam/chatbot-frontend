@@ -1,0 +1,89 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.chat-container {
+    /* width: 80%; */
+    max-width: 700px;
+    /* height: 500px; */
+    max-height: calc(100vh - 220px);
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.message {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.user-message {
+    background-color: #2F66AF;
+    padding: 1px 10px;
+    color: #fff;
+}
+
+.bot-message {
+    background-color: #F1F0F0;
+    padding: 1px 10px;
+}
+
+.input-container {
+    position: fixed;
+    bottom: 0;
+    width: 80%;
+    max-width: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+
+}
+
+.input-container input {
+    width: 80%;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.input-container button {
+    width: 15%;
+    padding: 5px;
+    margin-left: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.center {
+    text-align: center;
+}
+
+.inicio-container {
+    max-width: 700px;
+    max-height: calc(100vh - 170px);
+    margin: 0 auto;    
+    padding: 10px;
+    text-align: justify;
+}
+
+
+.button-irAChat {
+    width: 15%;
+    padding: 5px;
+    margin-left: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    /*  que ocupe el ancho de la pagina */
+    width: 100%;
+    
+}
