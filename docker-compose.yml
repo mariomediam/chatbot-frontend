@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   frontend:
-    container_name: docker_react
+    container_name: docker_chatbot_frontend
     build:
       context: frontend    
       target: development
@@ -14,14 +14,16 @@ services:
       - ./frontend:/code
       - /code/node_modules
     networks:
-      backend:
-        ipv4_address: 192.20.0.7
+      frontend:
+        ipv4_address: 192.30.0.7
     environment:
        - CHOKIDAR_USEPOLLING=true
+    # env_file:
+    #    - ./frontend/.env
 
 networks:
-  backend:
+  frontend:
     driver: bridge
     ipam:
       config:
-        - subnet: 192.20.0.0/24
+        - subnet: 192.30.0.0/24

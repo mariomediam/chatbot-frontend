@@ -1,11 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { Chat } from './components/Chat'
-import "./index.css"
-import { Inicio } from './components/Inicio'
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import {
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  //<React.StrictMode>
-    <Inicio />
-  //</React.StrictMode>,
-)
+import router from "./routes/AppRoute";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    
+    <RouterProvider router={router} />
+
+    
+  </React.StrictMode>
+);
+

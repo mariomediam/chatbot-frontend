@@ -40,3 +40,6 @@ CMD [ "npm", "start" ]
 FROM nginx:1.13-alpine
 
 COPY --from=builder /code/build /usr/share/nginx/html
+
+# COPY env.sh /docker-entrypoint.d/env.sh
+# RUN chmod +x /docker-entrypoint.d/env.sh

@@ -1,6 +1,8 @@
 export const Mensaje = ({setIrAChat}) => {
     return (
-        <div className="inicio-container">            
+        <div className="inicio-container">     
+
+          
 
             <p>¡Hola! Quería compartir contigo un proyecto en el que he estado trabajando: ¡un chatbot asistente desarrollado con tecnología de Inteligencia Artificial para brindar información y orientar a los ciudadanos sobre los servicios que ofrece la Municipalidad Provincial de Piura de acuerdo al TUPA</p>
 

@@ -1,5 +1,5 @@
-import { ChatMessage } from "./ChatMessage"
-import { useChat } from "../hooks/useChat"
+import { ChatMessage } from "./ChatMessage";
+import { useChat } from "../hooks/useChat";
 
 export const Chat = () => {
   const {
@@ -13,10 +13,10 @@ export const Chat = () => {
     onSubmitForm,
     enviarPregunta,
     onKeyDownInput,
-  } = useChat()
+  } = useChat();
 
   const handleDownload = () => {
-    window.open('../../public/tupa_entrenamiento.pdf', '_blank');
+    window.open("../../public/tupa_entrenamiento.pdf", "_blank");
   };
 
   return (
@@ -24,11 +24,15 @@ export const Chat = () => {
       <h1 className="center">ChatBot - Municipalidad Provincial de Piura</h1>
       {/* alinear span al centro */}
 
-        
-        <div className="center"> 
-        <a href="tupa-entrenamiento.pdf" download><small>Descargar información con la que el chatbot ha sido entrenado</small></a>
-        </div>
+      <div className="center">
+        <a href="tupa-entrenamiento.pdf" download>
+          <small>
+            Descargar información con la que el chatbot ha sido entrenado
+          </small>
+        </a>
+      </div>
 
+    
 
       <div className="chat-container" id="chatContainer" ref={chatContainerRef}>
         <ChatMessage
@@ -37,7 +41,12 @@ export const Chat = () => {
         />
 
         {messages.map(({ message, isBot, isSpinner }, index) => (
-          <ChatMessage key={index} message={message} isBot={isBot} isSpinner={isSpinner} />
+          <ChatMessage
+            key={index}
+            message={message}
+            isBot={isBot}
+            isSpinner={isSpinner}
+          />
         ))}
       </div>
       <div className="input-container">
@@ -58,5 +67,5 @@ export const Chat = () => {
         </form>
       </div>
     </>
-  )
-}
+  );
+};
