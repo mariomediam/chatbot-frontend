@@ -9,6 +9,7 @@ export const Init = () => {
       <div className="flex my-5 flex-grow justify-center items-center">
         <img src={imgLogo} alt="Logo" className="max-h-[300px]" />
       </div>
+      
     </div>
   );
 };

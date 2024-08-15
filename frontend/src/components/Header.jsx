@@ -1,6 +1,13 @@
+import { useContext } from "react";
+
+
 import LogoIcon from "./icons/LogoIcon";
+import AuthContext from "../context/AuthContext";
+import { PopoverUserProfile } from "./PopoverUserProfile";
 
 export const Header = () => {
+  const { userName } = useContext(AuthContext);
+
   return (
     <nav className="bg-primary border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -37,7 +44,7 @@ export const Header = () => {
           </svg>
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border  border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border items-center border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
             <li>
               <a
                 href="#"
@@ -71,7 +78,18 @@ export const Header = () => {
                 Reportes
               </a>
             </li>
+            <li              
+              data-popover-target="popover-user-profile" 
+              className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-bg_primary rounded-full dark:bg-gray-600"
+            >
+              <span className="font-medium text-primary">
+                {userName?.substring(0, 1).toUpperCase()}
+              </span>
+              
+            </li>
+            
           </ul>
+          <PopoverUserProfile />
         </div>
       </div>
     </nav>

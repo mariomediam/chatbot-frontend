@@ -79,7 +79,7 @@ export const Login = () => {
                     className="focus:outline-none text-white bg-primary hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-10 py-2.5 me-2 mb-2"
                     onClick={onClickLogin}
                   >
-                    Ingresar {userNameContext}
+                    Ingresar
                   </button>
                 </div>
               </div>
