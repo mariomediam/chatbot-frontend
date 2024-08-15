@@ -1,26 +1,41 @@
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { login } from "../services/authService";
+import AuthContext from "../context/AuthContext";
 import imgLogo from "../assets/logo.png";
 import imgSideLogin from "../assets/side-login.jpg";
-import { useState } from "react";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("rbenites");
+  const [password, setPassword] = useState("987xyz@");
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  console.log("Se renderiza");
-
-
+  const {
+    setAuthContextLogin,
+    userName: userNameContext,
+    tokenEsValido,
+  } = useContext(AuthContext);
 
   const onClickLogin = async () => {
     try {
       const response = await login(username, password);
-      console.log(response);
+      await setAuthContextLogin(
+        username.toUpperCase(),
+        JSON.parse(localStorage.getItem("tupaTokens")),
+        ""
+      );
+      navigate("/main");
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
+  useEffect(() => {
+    if (tokenEsValido()) {
+      navigate("/main");
+    }
+  }, []);
 
   return (
     <div className="flex bg-gray-100 h-screen justify-center items-center">
@@ -64,20 +79,22 @@ export const Login = () => {
                     className="focus:outline-none text-white bg-primary hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-10 py-2.5 me-2 mb-2"
                     onClick={onClickLogin}
                   >
-                    Ingresar
+                    Ingresar {userNameContext}
                   </button>
                 </div>
               </div>
             </div>
           </div>
           <div className="bg-yellow-600">
-            <img src={imgSideLogin} alt="logo" className="object-cover h-[700px] w-[1500px]" />
+            <img
+              src={imgSideLogin}
+              alt="logo"
+              className="object-cover h-[700px] w-[1500px]"
+            />
             {/* <p>HOla</p> */}
           </div>
         </div>
       </div>
     </div>
   );
-
-  
 };

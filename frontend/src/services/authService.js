@@ -15,6 +15,8 @@ const login = async (username, password) => {
       url: "/login",
       data: dataRequest,
     });
+
+    await localStorage.setItem("tupaTokens", JSON.stringify(data));
     return data;
   } catch (error) {
     throw error;
