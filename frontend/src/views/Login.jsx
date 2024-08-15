@@ -8,8 +8,8 @@ import imgSideLogin from "../assets/side-login.jpg";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("rbenites");
-  const [password, setPassword] = useState("987xyz@");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const {
     setAuthContextLogin,
