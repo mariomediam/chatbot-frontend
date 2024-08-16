@@ -1,12 +1,23 @@
 import { useContext } from "react";
-
+import { useLocation } from 'react-router-dom';
 
 import LogoIcon from "./icons/LogoIcon";
 import AuthContext from "../context/AuthContext";
 import { PopoverUserProfile } from "./PopoverUserProfile";
 
 export const Header = () => {
+  const location = useLocation();
+
   const { userName } = useContext(AuthContext);
+
+  const items = [
+    { name: "Importar procedimiento", url: "/import" },
+    { name: "Registrar TUPA", url: "#" },
+    { name: "Entrenar modelo", url: "#" },
+    { name: "Reportes", url: "#" },
+  ];
+
+  console.log(location.pathname);
 
   return (
     <nav className="bg-primary border-gray-200">
@@ -26,7 +37,7 @@ export const Header = () => {
           aria-controls="navbar-default"
           aria-expanded="false"
         >
-          <span className="sr-only">Open main menu</span>
+          <span className="sr-only">Abrir menu principal</span>
           <svg
             className="w-5 h-5"
             aria-hidden="true"
@@ -45,49 +56,24 @@ export const Header = () => {
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border items-center border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-bg_primary rounded hover:underline hover:underline-offset-4 md:border-0 md:p-0"
-                aria-current="page"
-              >
-                Maestros
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-bg_primary rounded hover:underline hover:underline-offset-4 md:border-0 md:p-0"
-              >
-                Registrar TUPA
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-bg_primary rounded hover:underline hover:underline-offset-4 md:border-0 md:p-0"
-              >
-                Entrenar modelo
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-bg_primary rounded hover:underline hover:underline-offset-4 md:border-0 md:p-0"
-              >
-                Reportes
-              </a>
-            </li>
-            <li              
-              data-popover-target="popover-user-profile" 
+            {items.map(({ name, url }, index) => (
+              <li key={index}>
+                <a
+                  href={url}
+                  className={`block py-2 px-3 text-bg_primary rounded hover:underline hover:underline-offset-4 md:border-0 md:p-0 ${location.pathname === url ? 'font-extrabold' : ''}`}
+                >
+                  {name}
+                </a>
+              </li>
+            ))}
+            <li
+              data-popover-target="popover-user-profile"
               className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-bg_primary rounded-full dark:bg-gray-600"
             >
               <span className="font-medium text-primary">
                 {userName?.substring(0, 1).toUpperCase()}
               </span>
-              
             </li>
-            
           </ul>
           <PopoverUserProfile />
         </div>

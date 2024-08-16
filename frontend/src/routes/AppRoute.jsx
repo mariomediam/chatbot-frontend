@@ -9,6 +9,7 @@ import { Login } from "../views/Login";
 import { Inicio } from "../components/Inicio";
 import { Init } from "../views/Init";
 import { PrivateRoutes } from "../routes/PrivateRoutes";
+import { ImportProcedure } from "../views/ImportProcedure";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         path: "main",
         element: <Init />,
       },
+      {
+        path: "import",
+        element: <ImportProcedure />,
+      }
     ],
   },
   {

@@ -1,11 +1,8 @@
 
 export const AlertError = ({className, message}) => {
 
-  console.log(message);
-  console.log(className);
   return (
     <div
-      // className="flex items-center px-2 mt-4 text-sm text-red-800 rounded-lg bg-red max-w-[300px]"      
       className={`flex items-center text-sm text-red-800 rounded-lg bg-red max-w-[300px] ${className}`}
       role="alert"
     >
