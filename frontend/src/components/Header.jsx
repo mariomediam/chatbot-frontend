@@ -11,8 +11,8 @@ export const Header = () => {
   const { userName } = useContext(AuthContext);
 
   const items = [
-    { name: "Importar procedimiento", url: "/import" },
-    { name: "Registrar TUPA", url: "#" },
+    { name: "Importar TUPA", url: "/import" },
+    { name: "Administrar TUPA", url: "/admin-tupa" },
     { name: "Entrenar modelo", url: "#" },
     { name: "Reportes", url: "#" },
   ];

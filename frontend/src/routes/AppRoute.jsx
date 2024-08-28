@@ -10,6 +10,7 @@ import { Inicio } from "../components/Inicio";
 import { Init } from "../views/Init";
 import { PrivateRoutes } from "../routes/PrivateRoutes";
 import { ImportProcedure } from "../views/ImportProcedure";
+import { AdminProcedure } from "../views/AdminProcedure";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
       {
         path: "import",
         element: <ImportProcedure />,
+      }
+      ,
+      {
+        path: "admin-tupa",
+        element: <AdminProcedure />,
       }
     ],
   },
