@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = `https://chatbot-backend-u0zq.onrender.com`;
+const URL = import.meta.env.VITE_REACT_APP_API;
 
 const crearChatSession = async () => {
     try {
@@ -29,10 +29,35 @@ const obtenerChatMessages = async (chatSessionId) => {
     }
 };
 
+const uploadTupa = async (file) => {
+
+    const dataRequest = {
+        archivo: file,        
+      };
+    
+      try {
+        const { data } = await axios({
+          method: "post",
+          baseURL: `${URL}`,
+          url: "/upload-tupa",
+          data: dataRequest,
+          headers: {"Content-Type": "multipart/form-data",},
+        });
+                    
+        return data;
+
+      } catch (error) {
+        throw error;
+      }
+    
+      return dataRequest;    
+  };
+
 
 
 export {
     crearChatSession,
     preguntarAlChatbot,
-    obtenerChatMessages
+    obtenerChatMessages,
+    uploadTupa
 };

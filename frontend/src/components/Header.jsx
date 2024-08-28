@@ -17,8 +17,6 @@ export const Header = () => {
     { name: "Reportes", url: "#" },
   ];
 
-  console.log(location.pathname);
-
   return (
     <nav className="bg-primary border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
