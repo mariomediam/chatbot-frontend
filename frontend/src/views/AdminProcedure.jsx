@@ -2,14 +2,18 @@ import { useState, useRef } from "react";
 
 import { Header } from "../components/Header";
 import { Breadcrumb } from "../components/Breadcrumb";
-import ListIcon from "../components/icons/ListIcon";
-import imgBackgroundSearch from "../assets/background-search.svg";
+import { ListIcon } from "../components/icons/ListIcon";
+import { useTupaStore } from "../store/tupaStore";
+import { TupaList } from "../components/tupa/TupaList";
+import { NoData } from "../components/messages/NoData";
+import { InitSearch } from "../components/messages/InitSearch";
+import { Spinner } from "../components/Spinner";
 
 export const AdminProcedure = () => {
-  const [isSaving, setIsSaving] = useState(false);
+  //   const [isSaving, setIsSaving] = useState(false);
+  const [isInit, setIsInit] = useState(true);
 
   const inputSearch = useRef(null);
-  //   const selectSearch = useRef(null);
 
   const itemsBreadCrumb = [{ name: "Administrar TUPA", url: "/admin-tupa" }];
 
@@ -24,7 +28,7 @@ export const AdminProcedure = () => {
     },
     {
       id: 3,
-      name: "Contenido",
+      name: "Código",
     },
   ];
 
@@ -32,16 +36,29 @@ export const AdminProcedure = () => {
     categorySearch[0].id
   );
 
+  const tupa = useTupaStore((state) => state.tupa);
+  const fecthTupa = useTupaStore((state) => state.fetchTupa);
+  const isLoading = useTupaStore((state) => state.isLoading);
+
   const selectCategorySearchChange = (e) => {
     console.log("Se seleccionó la categoría", e.target.value);
-    setCategorySearchSelected(e.target.value);
+    setCategorySearchSelected(parseInt(e.target.value));
     inputSearch.current.focus();
+  };
+
+  const onClickSearch = async (e) => {
+    e.preventDefault();
+    console.log("Se inicia onClickSearch");
+    setIsInit(false);
+    await fecthTupa(categorySearchSelected, inputSearch.current.value);
+    console.log("Se finaliza onClickSearch");
+    console.log(tupa);
   };
 
   return (
     <div
       className={`min-h-screen bg-bg_primary ${
-        isSaving ? "opacity-50 pointer-events-none" : ""
+        isLoading ? "opacity-50 pointer-events-none" : ""
       }`}
     >
       <Header />
@@ -58,7 +75,10 @@ export const AdminProcedure = () => {
           un nuevo procedimiento debe ir a la opción Importar TUPA.
         </p>
 
-        <form className="max-w-2xl w-full  mt-5 mx-auto">
+        <form
+          className="max-w-2xl w-full  mt-5 mx-auto"
+          onSubmit={onClickSearch}
+        >
           <div className="flex">
             <select
               id="category-search"
@@ -105,26 +125,20 @@ export const AdminProcedure = () => {
             </div>
           </div>
         </form>
+        <TupaList />
       </div>
 
       <div className="flex justify-center mx-4">
-        <div className="flex flex-col w-full max-w-2xl justify-center items-center border border-gray bg-bg_primary-100 rounded-lg p-3">
-          <p className="m-0 p-0 text-sm">
-            Por favor, ingrese sus criterios de búsqueda para comenzar
-          </p>
-          <div className="w-full flex justify-center">
-            <img
-              src={imgBackgroundSearch}
-              alt="Imagen buscar"
-              className="max-w-xs pt-0 mt-0 relative -top-[20px]"
-            />
-          </div>
-        </div>
+        {isInit && (
+          <InitSearch className="flex flex-col w-full max-w-2xl justify-center items-center border border-gray bg-bg_primary-100 rounded-lg p-3" />
+        )}
+        {!isInit && tupa.length === 0 && isLoading === false && (
+          <NoData className="flex flex-col w-full max-w-2xl justify-center items-center border border-gray bg-bg_primary-100 rounded-lg p-3" />
+        )}
       </div>
-      
 
-      {/* <Toaster richColors visibleToasts={9} position="top-right" />
-      {isSaving && <Spinner />} */}
+      {/* <Toaster richColors visibleToasts={9} position="top-right" />  */}
+      {isLoading && <Spinner />} 
     </div>
   );
 };

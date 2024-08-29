@@ -22,7 +22,7 @@ const login = async (username, password) => {
     throw error;
   }
 
-  return dataRequest;
+  // return dataRequest;
 };
 
 export { login };

@@ -1,4 +1,4 @@
-const ListIcon = ({ className }) => (
+export const ListIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -21,4 +21,4 @@ const ListIcon = ({ className }) => (
   </svg>
 );
 
-export default ListIcon;
+// export default ListIcon;

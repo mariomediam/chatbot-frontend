@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
+import { initFlowbite } from 'flowbite';
 
 import LogoIcon from "./icons/LogoIcon";
 import AuthContext from "../context/AuthContext";
@@ -16,6 +17,11 @@ export const Header = () => {
     { name: "Entrenar modelo", url: "#" },
     { name: "Reportes", url: "#" },
   ];
+
+  useEffect(() => {
+    initFlowbite();
+  }, []);
+  
 
   return (
     <nav className="bg-primary border-gray-200">
