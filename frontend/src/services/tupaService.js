@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL = import.meta.env.VITE_REACT_APP_API;
 
-const token = JSON.parse(localStorage.getItem("tupaTokens")).access
+const token = JSON.parse(localStorage.getItem("tupaTokens"))?.access
 
 const searchTupa = async (params) => {
 
