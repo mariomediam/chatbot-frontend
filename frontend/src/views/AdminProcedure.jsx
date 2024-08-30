@@ -125,7 +125,11 @@ export const AdminProcedure = () => {
             </div>
           </div>
         </form>
-        <TupaList />
+      </div>
+
+      <div className="max-w-2xl w-full  mt-5 mx-auto mb-5">
+        <TupaList  />
+
       </div>
 
       <div className="flex justify-center mx-4">
