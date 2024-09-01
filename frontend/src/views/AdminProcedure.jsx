@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
+import { toast, Toaster } from "sonner";
 
+import { useTupaStore } from "../store/tupaStore";
 import { Header } from "../components/Header";
 import { Breadcrumb } from "../components/Breadcrumb";
 import { ListIcon } from "../components/icons/ListIcon";
-import { useTupaStore } from "../store/tupaStore";
 import { TupaList } from "../components/tupa/TupaList";
 import { NoData } from "../components/messages/NoData";
 import { InitSearch } from "../components/messages/InitSearch";
@@ -52,7 +53,13 @@ export const AdminProcedure = () => {
     setIsInit(false);
     await fecthTupa(categorySearchSelected, inputSearch.current.value);
     console.log("Se finaliza onClickSearch");
-    console.log(tupa);
+    const tupaTmp = useTupaStore.getState().tupa; // Obtén el estado actualizado de tupa
+
+    if (Array.isArray(tupaTmp) && tupaTmp.length === 0) {
+      toast.warning("No se encontraron registros coincidentes", {
+        closeButton: true,
+      });
+    }
   };
 
   return (
@@ -127,6 +134,7 @@ export const AdminProcedure = () => {
         </form>
       </div>
 
+
       <div className="max-w-2xl w-full  mt-5 mx-auto mb-5">
         <TupaList  />
 
@@ -141,7 +149,7 @@ export const AdminProcedure = () => {
         )}
       </div>
 
-      {/* <Toaster richColors visibleToasts={9} position="top-right" />  */}
+      <Toaster richColors visibleToasts={9} position="top-right" /> 
       {isLoading && <Spinner />} 
     </div>
   );

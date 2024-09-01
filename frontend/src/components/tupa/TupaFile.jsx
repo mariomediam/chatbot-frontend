@@ -14,11 +14,11 @@ export const TupaFile = ({ file }) => {
       <div className="flex">
         <button
           type="button"
-          class="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center me-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500"
+          className="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center me-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500"
           title="Descargar archivo"
         >
           <DownloadIcon className="w-5 h-5" />
-          <span class="sr-only">Descargar archivo</span>
+          <span className="sr-only">Descargar archivo</span>
         </button>
 
         <button
@@ -27,7 +27,7 @@ export const TupaFile = ({ file }) => {
           title="Eliminar archivo"
         >
           <TrashIcon className="w-5 h-5" />
-          <span class="sr-only">Eliminar archivo</span>
+          <span className="sr-only">Eliminar archivo</span>
         </button>
       </div>
     </div>
