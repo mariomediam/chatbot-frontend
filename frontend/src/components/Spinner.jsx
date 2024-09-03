@@ -3,7 +3,7 @@ export const Spinner = () => {
   return (
     <div
       role="status"
-      className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"
+      className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"      
     >
       <svg
         aria-hidden="true"

@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
 import { initFlowbite } from "flowbite";
-import { TupaFile } from "./TupaFile";
+
+import { TupaDescripModal } from "./TupaDescripModal";
+import { useTupaStore } from "../../store/tupaStore";
+
 import { FileDescriptionIcon } from "../icons/FileDescriptionIcon";
 import { PencilPlusIcon } from "../icons/PencilPlusIcon";
 import { PaperClipIcon } from "../icons/PaperClipIcon";
 import { TrashIcon } from "../icons/TrashIcon";
-import { TupaDescripModal } from "./TupaDescripModal";
+import { TupaFile } from "./TupaFile";
+import { TupaTrainingModal } from "./TupaTrainingModal";
 
 export const TupaItem = ({ item }) => {
-  const [openModal, setOpenModal] = useState(false);
+  const setCurrentTupa = useTupaStore((state) => state.setCurrentTupa);
+  const [openModalDescrip, setOpenModalDescrip] = useState(false);
+  const [openModalTraining, setOpenModalTraining] = useState(false);
 
   useEffect(() => {
     initFlowbite();
   }, []);
 
-  const onClicEditDescription = () => {
-    console.log("Se hizo clic en Editar descripción");
-    // impedir se muestre el modal
-    // document.querySelector("#medium-modal").classList.remove("hidden");
-    setOpenModal(true)
+  const onClicEditDescription = () => {    
+    setCurrentTupa(item);
+    setOpenModalDescrip(true)
+  };
+
+  const onClicEditTraining = () => {
+    setCurrentTupa(item);
+    setOpenModalTraining(true)
   };
 
   return (
@@ -128,6 +137,7 @@ export const TupaItem = ({ item }) => {
                 <button
                   type="button"
                   className="inline-flex flex-col items-center justify-center px-5 border-gray-200 border-x group  text-bg_primary hover:bg-bg_primary-700"
+                  onClick={onClicEditTraining}
                 >
                   <PencilPlusIcon className="w-6 h-6 " />
                   <span className="text-xs ">Modificar entrenamiento</span>
@@ -149,7 +159,8 @@ export const TupaItem = ({ item }) => {
               </div>
             </div>
             <div className="bg-black">
-            <TupaDescripModal openModal={openModal} setOpenModal={setOpenModal}/>
+            <TupaDescripModal openModal={openModalDescrip} setOpenModal={setOpenModalDescrip}/>
+            <TupaTrainingModal openModal={openModalTraining} setOpenModal={setOpenModalTraining}/>
 
             </div>
             

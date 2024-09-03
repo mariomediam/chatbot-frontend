@@ -29,7 +29,42 @@ const searchTupa = async (params) => {
       
 };
 
+const updateTupaDescrip = async (tupaId, tupaDescrip) => {
+    try {
+        const { data } = await axios({
+            method: "put",
+            baseURL: `${URL}`,
+            url: `/update-tupa-descrip/${tupaId}`,
+            data: { tupaDescrip },
+            headers: { Authorization: `Bearer ${token}` }
+        });
+
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const updateTupaPrecisa = async (tupaId, tupaPrecisa) => {
+    try {
+        const { data } = await axios({
+            method: "put",
+            baseURL: `${URL}`,
+            url: `/update-tupa-precisa/${tupaId}`,
+            data: { tupaPrecisa },
+            headers: { Authorization: `Bearer ${token}` }
+        });
+
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
 
 export {
-    searchTupa
+    searchTupa,
+    updateTupaDescrip,
+    updateTupaPrecisa
 };

@@ -48,18 +48,27 @@ export const AdminProcedure = () => {
   };
 
   const onClickSearch = async (e) => {
-    e.preventDefault();
-    console.log("Se inicia onClickSearch");
-    setIsInit(false);
-    await fecthTupa(categorySearchSelected, inputSearch.current.value);
-    console.log("Se finaliza onClickSearch");
-    const tupaTmp = useTupaStore.getState().tupa; // Obtén el estado actualizado de tupa
+    try {
+      e.preventDefault();
+      console.log("Se inicia onClickSearch");
+      setIsInit(false);
+      await fecthTupa(categorySearchSelected, inputSearch.current.value);
+      console.log("Se finaliza onClickSearch");
+      const tupaTmp = useTupaStore.getState().tupa; // Obtén el estado actualizado de tupa
+  
+      if (Array.isArray(tupaTmp) && tupaTmp.length === 0) {
+        toast.warning("No se encontraron registros coincidentes", {
+          closeButton: true,
+        });
+      }  
+    } catch (error) {
 
-    if (Array.isArray(tupaTmp) && tupaTmp.length === 0) {
-      toast.warning("No se encontraron registros coincidentes", {
-        closeButton: true,
-      });
+      const [ errorMessage ] = error?.response?.data?.messages 
+
+      console.log(errorMessage.message)
+      toast.error(errorMessage?.message, {closeButton: true});
     }
+    
   };
 
   return (
@@ -137,6 +146,7 @@ export const AdminProcedure = () => {
 
       <div className="max-w-2xl w-full  mt-5 mx-auto mb-5">
         <TupaList  />
+        {isLoading && <Spinner />} 
 
       </div>
 
@@ -150,7 +160,7 @@ export const AdminProcedure = () => {
       </div>
 
       <Toaster richColors visibleToasts={9} position="top-right" /> 
-      {isLoading && <Spinner />} 
+     
     </div>
   );
 };
