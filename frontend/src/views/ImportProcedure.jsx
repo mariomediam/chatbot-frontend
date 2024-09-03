@@ -51,14 +51,7 @@ export const ImportProcedure = () => {
         duration: Infinity,
         closeButton: true,
       });
-
-      // toast.promise(uploadTupa(archivo), {
-      //   loading: "Importando archivo...",
-      //   success: (data) => {
-      //     return `Archivo importado correctamente`;
-      //   },
-      //   error: "Error",
-      // });
+    
     } catch (error) {
       toast.error(JSON.stringify(error?.response?.data?.content), {
         duration: Infinity,

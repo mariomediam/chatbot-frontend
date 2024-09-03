@@ -10,24 +10,31 @@ import { PaperClipIcon } from "../icons/PaperClipIcon";
 import { TrashIcon } from "../icons/TrashIcon";
 import { TupaFile } from "./TupaFile";
 import { TupaTrainingModal } from "./TupaTrainingModal";
+import { TupaFileModal } from "./TupaFileModal";
 
 export const TupaItem = ({ item }) => {
   const setCurrentTupa = useTupaStore((state) => state.setCurrentTupa);
   const [openModalDescrip, setOpenModalDescrip] = useState(false);
   const [openModalTraining, setOpenModalTraining] = useState(false);
+  const [openModalFile, setOpenModalFile] = useState(false);
 
   useEffect(() => {
     initFlowbite();
   }, []);
 
-  const onClicEditDescription = () => {    
+  const onClicEditDescription = () => {
     setCurrentTupa(item);
-    setOpenModalDescrip(true)
+    setOpenModalDescrip(true);
   };
 
   const onClicEditTraining = () => {
     setCurrentTupa(item);
-    setOpenModalTraining(true)
+    setOpenModalTraining(true);
+  };
+
+  const onClicAddFile = () => {
+    setCurrentTupa(item);
+    setOpenModalFile(true);
   };
 
   return (
@@ -114,9 +121,19 @@ export const TupaItem = ({ item }) => {
             >
               Archivos o formatos
             </label>
-            <div className="border border-gray-400 rounded p-3">
+            {/* <div className="border border-gray-400 rounded p-3">            
               {item.tupa_tupaFiles.map((file) => (
                 <TupaFile file={file} key={file.tupaFileId} />
+              ))}
+            </div> */}
+            <div className="border border-gray-400 rounded p-3">
+              {item.tupa_tupaFiles.map((file) => (
+                <div
+                  key={file.tupaFileId}
+                  className="border-b border-gray-400 py-2 first:pt-0 last:border-b-0 last:pb-0"
+                >
+                  <TupaFile file={file} />
+                </div>
               ))}
             </div>
 
@@ -127,8 +144,8 @@ export const TupaItem = ({ item }) => {
                 <button
                   type="button"
                   className="inline-flex flex-col items-center justify-center px-5 border-gray-200 border-x  group  text-bg_primary hover:bg-bg_primary-700"
-                //   data-modal-target="medium-modal"
-                //   data-modal-toggle="medium-modal"
+                  //   data-modal-target="medium-modal"
+                  //   data-modal-toggle="medium-modal"
                   onClick={onClicEditDescription}
                 >
                   <FileDescriptionIcon className="w-6 h-6 " />
@@ -145,6 +162,7 @@ export const TupaItem = ({ item }) => {
                 <button
                   type="button"
                   className="inline-flex flex-col items-center justify-center px-5 border-gray-200 border-x group  text-bg_primary hover:bg-bg_primary-700"
+                  onClick={onClicAddFile}
                 >
                   <PaperClipIcon className="w-6 h-6 stroke-2" />
                   <span className="text-xs ">Agregar archivo</span>
@@ -159,12 +177,19 @@ export const TupaItem = ({ item }) => {
               </div>
             </div>
             <div className="bg-black">
-            <TupaDescripModal openModal={openModalDescrip} setOpenModal={setOpenModalDescrip}/>
-            <TupaTrainingModal openModal={openModalTraining} setOpenModal={setOpenModalTraining}/>
-
+              <TupaDescripModal
+                openModal={openModalDescrip}
+                setOpenModal={setOpenModalDescrip}
+              />
+              <TupaTrainingModal
+                openModal={openModalTraining}
+                setOpenModal={setOpenModalTraining}
+              />
+              <TupaFileModal
+                openModal={openModalFile}
+                setOpenModal={setOpenModalFile}
+              />
             </div>
-            
-            
           </div>
         </div>
       </div>

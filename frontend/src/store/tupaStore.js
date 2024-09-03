@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { searchTupa, updateTupaDescrip, updateTupaPrecisa } from "../services/tupaService";
+import { insertTupaFile, searchTupa, updateTupaDescrip, updateTupaPrecisa } from "../services/tupaService";
 
 export const useTupaStore = create((set) => ({
   tupa: [],
@@ -46,6 +46,19 @@ export const useTupaStore = create((set) => ({
       set({ isLoading: true });
       const data = await updateTupaPrecisa(tupaId, training);
       console.log("Se finaliza updateTraining store");
+      return data;
+    } catch (error) {
+      throw error;
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  addTupaFile: async(params) => {
+    try {
+      console.log("Se inicia addTupaFile store");
+      set({ isLoading: true });
+      const data = await insertTupaFile(params);
+      console.log("Se finaliza addTupaFile store");
       return data;
     } catch (error) {
       throw error;
