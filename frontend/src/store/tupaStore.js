@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { insertTupaFile, searchTupa, updateTupaDescrip, updateTupaPrecisa } from "../services/tupaService";
+import { deleteTupaFile, deleteTupaItem, insertTupaFile, searchTupa, updateTupaDescrip, updateTupaPrecisa } from "../services/tupaService";
 
 export const useTupaStore = create((set) => ({
   tupa: [],
@@ -65,5 +65,32 @@ export const useTupaStore = create((set) => ({
     } finally {
       set({ isLoading: false });
     }
+  },
+  removeTupaFile: async (tupaFileId) => {
+    try {
+      console.log("Se inicia removeTupaFile store");
+      set({ isLoading: true });
+      const data = await deleteTupaFile(tupaFileId);
+      console.log("Se finaliza removeTupaFile store");
+      return data;
+    } catch (error) {
+      throw error;
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  removeTupaItem: async (tupaId) => {
+    try {
+      console.log("Se inicia removeTupaItem store");
+      set({ isLoading: true });
+      const data = await deleteTupaItem(tupaId);
+      console.log("Se finaliza removeTupaItem store");
+      return data;
+    } catch (error) {
+      throw error;
+    } finally {
+      set({ isLoading: false });
+    }
   }
+
 }));

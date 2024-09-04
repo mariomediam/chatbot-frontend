@@ -65,7 +65,7 @@ export const TupaFileModal = ({ openModal, setOpenModal }) => {
       await fecthTupa(filterSearch.option, filterSearch.search);
       
       setOpenModal(false);
-      toast.success("Procedimiento actualizado", {
+      toast.success("Archivo agregado con exito", {
         closeButton: true,
       });
     } catch (error) {

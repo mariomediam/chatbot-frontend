@@ -81,4 +81,34 @@ const insertTupaFile = async (params) => {
   }
 };
 
-export { searchTupa, updateTupaDescrip, updateTupaPrecisa, insertTupaFile };
+const deleteTupaFile = async (tupaFileId) => {
+    try {
+        const { data } = await axios({
+        method: "delete",
+        baseURL: `${URL}`,
+        url: `/delete-tupa-file/${tupaFileId}`,
+        headers: { Authorization: `Bearer ${token}` },
+        });
+    
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const deleteTupaItem = async (tupaId) => {
+    try {
+        const { data } = await axios({
+        method: "delete",
+        baseURL: `${URL}`,
+        url: `/delete-tupa/${tupaId}`,
+        headers: { Authorization: `Bearer ${token}` },
+        });
+    
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export { searchTupa, updateTupaDescrip, updateTupaPrecisa, insertTupaFile, deleteTupaFile, deleteTupaItem };
