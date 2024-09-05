@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const URL = import.meta.env.VITE_REACT_APP_API;
+const token = JSON.parse(localStorage.getItem("tupaTokens"))?.access;
 
 const crearChatSession = async () => {
     try {
@@ -49,9 +50,29 @@ const uploadTupa = async (file) => {
       } catch (error) {
         throw error;
       }
-    
-      return dataRequest;    
+          
   };
+
+  const searchChats = async (params) => {
+
+    const dataRequest = params
+    
+      try {
+        const { data } = await axios({
+          method: "post",
+          baseURL: `${URL}`,
+          url: "/search-chats",
+          data: dataRequest,
+          headers: {"Content-Type": "application/json", Authorization: `Bearer ${token}`},
+        });
+                    
+        return data.content;
+
+      } catch (error) {
+        throw error;
+      }
+
+    }
 
 
 
@@ -59,5 +80,6 @@ export {
     crearChatSession,
     preguntarAlChatbot,
     obtenerChatMessages,
-    uploadTupa
+    uploadTupa,
+    searchChats
 };

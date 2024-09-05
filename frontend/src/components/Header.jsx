@@ -14,7 +14,7 @@ export const Header = () => {
   const items = [
     { name: "Importar TUPA", url: "/import" },
     { name: "Administrar TUPA", url: "/admin-tupa" },
-    { name: "Entrenar modelo", url: "#" },
+    { name: "Conversaciones", url: "/chats" },
     { name: "Reportes", url: "#" },
   ];
 
@@ -27,7 +27,7 @@ export const Header = () => {
     <nav className="bg-primary border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div className="flex">
-          <LogoIcon className="me-2 max-w-10  max-h-10" />
+          <LogoIcon className="me-2 max-w-10  max-h-10 text-bg_primary" />
 
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-bg_primary">
             TupaBot
