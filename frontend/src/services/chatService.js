@@ -42,7 +42,7 @@ const uploadTupa = async (file) => {
           baseURL: `${URL}`,
           url: "/upload-tupa",
           data: dataRequest,
-          headers: {"Content-Type": "multipart/form-data",},
+          headers: {"Content-Type": "multipart/form-data", Authorization: `Bearer ${token}`},
         });
                     
         return data;

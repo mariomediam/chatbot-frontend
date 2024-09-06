@@ -53,7 +53,8 @@ export const ImportProcedure = () => {
       });
     
     } catch (error) {
-      toast.error(JSON.stringify(error?.response?.data?.content), {
+      const msgError = error.response?.data?.message || error.message || "Error al importar archivo";
+      toast.error(JSON.stringify(msgError), {
         duration: Infinity,
         closeButton: true,
       });

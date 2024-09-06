@@ -12,6 +12,7 @@ import { PrivateRoutes } from "../routes/PrivateRoutes";
 import { ImportProcedure } from "../views/ImportProcedure";
 import { AdminProcedure } from "../views/AdminProcedure";
 import { ChatsSearch } from "../views/ChatsSearch";
+import { Chat } from "../components/Chat";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
   },
   {
     path: "chat",
-    element: <Inicio />,
+    element: <Chat />,
     errorElement: <ErrorPage />,
   },
   {
