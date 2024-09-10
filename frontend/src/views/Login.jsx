@@ -24,6 +24,10 @@ export const Login = () => {
   const onClickLogin = async (e) => {
     e.preventDefault();
     try {
+      if (username.toString().toLowerCase() === "demo") {
+        setErrorMessage("Usuario o contraseña incorrectos");
+        return;
+      }
       setIsLoading(true);
       const response = await login(username, password);
       await setAuthContextLogin(
@@ -36,7 +40,7 @@ export const Login = () => {
       if (error.response.status === 401) {
         setErrorMessage("Usuario o contraseña incorrectos");
       } else {
-        setErrorMessage(error.response.data.detail);
+        setErrorMessage(error?.response?.data?.detail);
       }
     } finally {
       setIsLoading(false);

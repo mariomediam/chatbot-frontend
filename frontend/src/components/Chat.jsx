@@ -77,7 +77,7 @@ export const Chat = () => {
                 <LoaderIcon className="w-4 h-4 text-gray-200 fill-blue-600" />
               </div>
               <div className="max-w-[70%] rounded-lg p-3 bg-gray-200">
-                <p>Thinking...</p>
+                <p>Pensando...</p>
               </div>
             </div>
           </div>
