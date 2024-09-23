@@ -2,6 +2,10 @@
 
 En un mundo donde la eficiencia administrativa y la automatización de procesos son esenciales, TUPA BOT emerge como una solución innovadora que transforma la manera de gestionar consultas sobre el Texto Único de Procedimientos Administrativos (TUPA). A diferencia de los chatbots tradicionales que solo listan opciones predefinidas, TUPA BOT está diseñado para aceptar lenguaje natural, interpretando y comprendiendo la consulta del usuario para ofrecer una respuesta precisa y contextualizada.
 
+https://github.com/user-attachments/assets/dffac6f0-6f6d-4b25-82ab-26fa5a1b8031
+
+https://github.com/user-attachments/assets/17a977a3-696d-4504-942b-871719193380
+
 ### Software utilizado
 
 ```
