@@ -11,7 +11,7 @@ import { LoaderIcon } from "./icons/LoaderIcon";
 export const Chat = () => {
 
   const [messages, setMessages] = useState([
-    { text: "¡Hola! Soy TupaBot. ¿En qué puedo ayudarte hoy?", isBot: true },
+    { text: "¡Hola! Soy TupaBot, orientador virtual de la Muncipalidad de Piura. ¿En qué puedo ayudarte hoy?", isBot: true },
   ]);
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
@@ -57,7 +57,7 @@ export const Chat = () => {
     <div className="flex flex-col h-[600px] max-w-md mx-auto border rounded-lg overflow-hidden bg-white shadow-lg">
       <div className="bg-blue-600 text-white p-4 flex items-center">
         <LogoIcon className="w-6 h-6 mr-2" />
-        <h1 className="text-lg font-semibold">TupaBot Municipalidad de ...</h1>
+        <h1 className="text-lg font-semibold">TupaBot Municipalidad de Piura</h1>
       </div>
       <div id="message-list" className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message, index) => (
