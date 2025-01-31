@@ -11,7 +11,7 @@ import { LoaderIcon } from "./icons/LoaderIcon";
 export const Chat = () => {
 
   const [messages, setMessages] = useState([
-    { text: "¡Hola! Soy TupaBot, orientador virtual de la Muncipalidad de Piura. ¿En qué puedo ayudarte hoy?", isBot: true },
+    { text: "¡Hola! Soy TupaBot, orientador virtual de la Municipalidad de Piura. ¿En qué puedo ayudarte hoy?", isBot: true },
   ]);
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
